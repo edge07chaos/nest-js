@@ -3,3 +3,23 @@
 @api =  http://{{hostname}}:{{port}}
 
 GET {{api}}/
+
+###
+GET {{api}}/cats
+
+
+### index
+GET {{api}}/cats?name=cat-name&age=99734
+
+### show
+GET {{api}}/cats/77
+
+### create
+POST {{api}}/cats
+Content-Type: application/json
+
+{
+    "name": "catty",
+    "age": 2,
+    "breed": "origon"
+}
