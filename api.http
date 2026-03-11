@@ -1,0 +1,5 @@
+@port = 3000
+@hostname = localhost
+@api =  http://{{hostname}}:{{port}}
+
+GET {{api}}/
