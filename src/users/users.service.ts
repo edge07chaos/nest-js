@@ -17,6 +17,6 @@ export class UsersService {
   ];
 
   async show(username: string) {
-    return this.users.find(user => user.username == username)
+    return this.users.find((user) => user.username == username);
   }
 }

@@ -1,8 +1,10 @@
-import z from "zod";
+import z from 'zod';
 
-export const signinSchema = z.object({
+export const signinSchema = z
+  .object({
     username: z.string(),
     password: z.string(),
-}).required();
+  })
+  .required();
 
 export type SigninDTO = z.infer<typeof signinSchema>;
