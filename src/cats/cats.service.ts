@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable, NotImplementedException } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
 import { randomUUID } from 'crypto';
 
@@ -20,6 +20,11 @@ export class CatsService {
   ];
 
   async index() {
+    // throw new HttpException("came on man!", HttpStatus.BAD_REQUEST);
+    throw new BadRequestException("something bad happened", {
+      cause: new Error(),
+      description: "some error description"
+    });
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(this.cats);
@@ -30,6 +35,7 @@ export class CatsService {
   async show() {}
 
   async store(cat: Cat) {
+    throw new HttpException("came on man!", HttpStatus.BAD_REQUEST);
     return new Promise((resolve) => {
       setTimeout(() => {
         this.cats.push(cat);
@@ -38,7 +44,7 @@ export class CatsService {
     });
   }
 
-  async update() {}
+  async update() { throw new NotImplementedException()}
 
-  async destroy() {}
+  async destroy() { throw new NotImplementedException()}
 }

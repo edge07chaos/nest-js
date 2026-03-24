@@ -4,6 +4,8 @@ import {
   Delete,
   Get,
   HttpCode,
+  HttpException,
+  HttpStatus,
   Param,
   Post,
   Put,
@@ -43,9 +45,13 @@ export class CatsController {
     return { res };
   }
 
-  @Put()
-  async update() {}
+  @Put(":id")
+  async update() {
+    return this.catsService.update();
+  }
 
-  @Delete()
-  async destroy() {}
+  @Delete(":id")
+  async destroy() {
+    return  this.catsService.destroy();
+  }
 }
