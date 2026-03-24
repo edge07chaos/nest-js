@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  HttpStatus,
   Param,
   ParseIntPipe,
   Post,
@@ -46,7 +47,7 @@ export class CatsController {
   }
 
   @Post()
-  @HttpCode(201)
+  @HttpCode(HttpStatus.CREATED)
   @UsePipes(new ZodValidationPipe(storeCatSchema))
   async store(@Body() storeCatDTO: StoreCatDTO) {
     const res = await this.catsService.store(storeCatDTO);
