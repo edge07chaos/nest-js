@@ -10,9 +10,11 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 import { CatsController } from './cats/cats.controller';
 import { SecurityMiddleware } from './common/middlewares/security.middleware';
 import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
-  imports: [CatsModule, AuthModule],
+  imports: [CatsModule, AuthModule, UsersModule],
   controllers: [AppController],
 })
 export class AppModule implements NestModule {
@@ -31,6 +33,6 @@ export class AppModule implements NestModule {
         path: 'cats',
         method: RequestMethod.GET,
       })
-      .forRoutes(AppController, CatsController);
+      .forRoutes(AppController, CatsController, AuthController);
   }
 }
