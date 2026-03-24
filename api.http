@@ -23,3 +23,15 @@ Content-Type: application/json
     "age": 2,
     "breed": "origon"
 }
+
+### update
+PUT {{api}}/cats/1
+
+Content-Type: application/json
+
+{
+    "name": "catty",
+    "age": 2,
+    "breed": "origon"
+}
+
