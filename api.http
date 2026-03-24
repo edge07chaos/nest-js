@@ -4,11 +4,12 @@
 
 GET {{api}}/
 
-###
-GET {{api}}/cats
-
+### ----------- CATS ----------- ###
 
 ### index
+GET {{api}}/cats
+
+### index - query
 GET {{api}}/cats?name=cat-name&age=99734
 
 ### show
@@ -19,9 +20,9 @@ POST {{api}}/cats
 Content-Type: application/json
 
 {
+    "age": 2599,
     "name": "catty",
-    "age": 2,
-    "breed": "origon"
+    "breed": "argon"
 }
 
 ### update
@@ -35,3 +36,13 @@ Content-Type: application/json
     "breed": "origon"
 }
 
+
+### ------- AUTH -------- ####
+
+POST {{api}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "maria",
+    "password": "guess"
+}

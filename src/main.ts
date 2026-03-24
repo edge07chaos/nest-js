@@ -10,9 +10,11 @@ async function bootstrap() {
 bootstrap()
   .then(() => {
     console.log('server is fuckin running baby!');
+    console.log("check window:", process.env.PORT ?? 3000);
+    
   })
   .catch((error) => {
-    console.log('server is crying, damm: ', error);
+    console.log('server is crying, damm:', error);
   })
   .finally(() => {
     console.log('the end of the chain baby!');
