@@ -29,7 +29,7 @@ export class CatsController {
     const data = await this.catsService.index();
     return {
       ok: true,
-      data
+      data,
     };
   }
 

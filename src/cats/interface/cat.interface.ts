@@ -1,6 +1,6 @@
-export interface Cat {
+export interface ICat {
   id: string;
-  age: number;
   name: string;
+  age: number;
   breed: string;
 }

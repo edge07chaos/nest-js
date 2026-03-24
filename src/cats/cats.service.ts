@@ -1,10 +1,10 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
-import { Cat } from './interfaces/cat.interface';
+import { ICat } from './interface/cat.interface';
 import { randomUUID } from 'crypto';
 
 @Injectable()
 export class CatsService {
-  private readonly cats: Cat[] = [
+  private readonly cats: ICat[] = [
     {
       id: randomUUID(),
       name: 'first cat',
@@ -34,10 +34,13 @@ export class CatsService {
 
   async show() {}
 
-  async store(cat: Cat) {
+  async store(cat: Omit<ICat, 'id'>) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        this.cats.push(cat);
+        this.cats.push({
+          id: randomUUID(),
+          ...cat,
+        });
         resolve(this.cats);
       }, 500);
     });
