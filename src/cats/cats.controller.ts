@@ -4,15 +4,17 @@ import {
   Delete,
   Get,
   HttpCode,
-  HttpException,
-  HttpStatus,
   Param,
+  ParseIntPipe,
   Post,
   Put,
+  UsePipes,
   //   Query,
 } from '@nestjs/common';
-import { StoreCatDTO } from './dto/store-cat.dto';
 import { CatsService } from './cats.service';
+import { storeCatSchema, type StoreCatDTO } from './dto/store-cat.dto';
+import { ZodValidationPipe } from './pipe/zod-validation.pipe';
+// import { StoreCatDto } from './dto/store-cat.dto';
 
 @Controller('cats')
 export class CatsController {
@@ -23,11 +25,15 @@ export class CatsController {
     // @Query('name') name?: string,
     // @Query('age') age?: number,
     // @Query('breed') breed?: string,
-    return this.catsService.index();
+    const data = await this.catsService.index();
+    return {
+      ok: true,
+      data
+    };
   }
 
   @Get(':id')
-  show(@Param('id') id: string) {
+  show(@Param('id', ParseIntPipe) id: string) {
     console.log('showing id:', id);
     return {
       data: {
@@ -40,18 +46,19 @@ export class CatsController {
 
   @Post()
   @HttpCode(201)
+  @UsePipes(new ZodValidationPipe(storeCatSchema))
   async store(@Body() storeCatDTO: StoreCatDTO) {
     const res = await this.catsService.store(storeCatDTO);
     return { res };
   }
 
-  @Put(":id")
+  @Put(':id')
   async update() {
     return this.catsService.update();
   }
 
-  @Delete(":id")
+  @Delete(':id')
   async destroy() {
-    return  this.catsService.destroy();
+    return this.catsService.destroy();
   }
 }
