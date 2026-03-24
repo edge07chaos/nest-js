@@ -39,7 +39,8 @@ export class CatsController {
   @Post()
   @HttpCode(201)
   async store(@Body() storeCatDTO: StoreCatDTO) {
-    return this.catsService.store(storeCatDTO);
+    const res = await this.catsService.store(storeCatDTO);
+    return { res };
   }
 
   @Put()

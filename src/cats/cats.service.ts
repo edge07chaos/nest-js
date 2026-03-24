@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Cat } from './interfaces/cat.interface';
-import { create } from 'domain';
 import { randomUUID } from 'crypto';
 
 @Injectable()
@@ -21,13 +20,22 @@ export class CatsService {
   ];
 
   async index() {
-    return this.cats;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.cats);
+      }, 100);
+    });
   }
 
   async show() {}
 
   async store(cat: Cat) {
-    this.cats.push(cat);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.cats.push(cat);
+        resolve(this.cats);
+      }, 500);
+    });
   }
 
   async update() {}
