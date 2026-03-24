@@ -13,7 +13,8 @@ import {
 } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { storeCatSchema, type StoreCatDTO } from './dto/store-cat.dto';
-import { ZodValidationPipe } from './pipe/zod-validation.pipe';
+import { ZodValidationPipe } from 'src/common/pipes/zod-validation.pipe';
+
 // import { StoreCatDto } from './dto/store-cat.dto';
 
 @Controller('cats')
