@@ -46,3 +46,10 @@ Content-Type: application/json
     "username": "maria",
     "password": "guess"
 }
+
+###
+
+GET {{api}}/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsInVzZXJuYW1lIjoibWFyaWEiLCJpYXQiOjE3NzQ0MDAxODksImV4cCI6MTc3NDQwMDIxOX0.WCCULnG1HOyVuKjcmrZt6WFdgjxoVCA0Ly8aURtqBAA
+
+Content-Type: application/json
